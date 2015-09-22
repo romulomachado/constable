@@ -19,7 +19,7 @@ config :constable, Constable.Endpoint,
 config :constable, Constable.Repo,
   url: System.get_env("DATABASE_URL")
 
-# Do not pring debug messages in production
+# Do not print debug messages in production
 config :logger, level: :info
 
 # ## Using releases
