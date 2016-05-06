@@ -2,12 +2,12 @@
   <%= for announcement <- @announcements do %>
     <li class="announcement-list-item">
       <%= link to: announcement_path(@conn, :show, announcement.id) do %>
-        <h1 data-role="title"><%= announcement.title %></h1>
+        <h1 class="announcement-title" data-role="title"><%= announcement.title %></h1>
       <% end %>
 
-      <span>
+      <span class="announcement-metadata">
         <%= gettext "announced" %>
-        <time>
+        <time class="announced-at">
           <%= time_ago_in_words(announcement.inserted_at) %>
         </time>
         to
