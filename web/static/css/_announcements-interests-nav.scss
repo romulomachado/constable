@@ -9,7 +9,9 @@
   a {
     border-bottom: 1px solid transparent;
     color: $medium-gray;
+    font-weight: $bold-weight;
     padding: $tiny-spacing;
+    text-transform: uppercase;
     transform: translateY(1px);
 
     &:hover,
