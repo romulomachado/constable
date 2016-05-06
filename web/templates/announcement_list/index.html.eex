@@ -14,8 +14,8 @@
       </span>
 
       <%= for interest <- announcement.interests do %>
-        <%= link to: interest_path(@conn, :show, interest) do %>
-          <span class="interest"><%= interest.name %></span>
+        <%= link to: interest_path(@conn, :show, interest), class: "interest" do %>
+          #<%= interest.name %>
         <% end %>
       <% end %>
 
