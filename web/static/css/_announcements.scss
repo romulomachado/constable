@@ -29,8 +29,8 @@
     border-bottom: 1px solid #ccc;
 
     &:hover {
-      color: $red;
-      border-color: $red;
+      color: $action-hover-color;
+      border-color: $action-hover-color;
     }
 
     &:last-child {
