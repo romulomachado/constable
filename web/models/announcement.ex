@@ -9,6 +9,7 @@ defmodule Constable.Announcement do
     field :title
     field :body
     field :last_discussed_at, Ecto.DateTime, autogenerate: true
+    field :interest_names, :string, virtual: true
     timestamps
 
     belongs_to :user, User
@@ -22,12 +23,16 @@ defmodule Constable.Announcement do
   def changeset(announcement, context, params \\ %{})
   def changeset(announcement, :update, params) do
     announcement
-    |> cast(params, ~w(title body), [])
+    |> cast(params, ~w(title body))
+    |> validate_required(~w(title body)a)
+    |> put_interest_names
   end
 
   def changeset(announcement, :create, params) do
     announcement
-    |> cast(params, ~w(title body user_id), [])
+    |> cast(params, ~w(title body user_id))
+    |> validate_required(~w(title body user_id)a)
+    |> put_interest_names
   end
 
   def last_discussed_first(query \\ __MODULE__) do
@@ -53,6 +58,19 @@ defmodule Constable.Announcement do
         ^search_term
       )
     )
+  end
+
+  defp put_interest_names(changeset) do
+    if changeset.params["interest_names"] do
+      interest_names = changeset.params[:interest_names]
+    else
+      interest_names = Ecto.assoc(changeset.data, :interests) 
+        |> Constable.Repo.all
+        |> Enum.map(&(&1.name))
+        |> Enum.join(",")
+    end
+
+    put_in(changeset.data.interest_names, interest_names)
   end
 
   defp prepare_for_tsquery(search_term) do

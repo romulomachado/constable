@@ -15,7 +15,7 @@
     <div class="announcement-form">
       <%= text_input f, :title, placeholder: gettext("What are you announcing?") %>
 
-      <%= text_input :announcement, :interests, placeholder: gettext("Interests") %>
+      <%= text_input f, :interest_names, placeholder: gettext("Interests") %>
 
       <%= textarea f, :body, placeholder: gettext("Write markdown here. You can @mention specific people to notify them") %>
     </div>

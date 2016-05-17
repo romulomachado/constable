@@ -26,7 +26,7 @@ const watchBody = function() {
 }
 
 const setupInterestsSelect = function() {
-  const interests = $('#announcement_interests');
+  const interests = $('#announcement_interest_names');
 
   if (interests.lenth !== 0) {
     if (interests.val() === '') {

@@ -40,15 +40,15 @@ defmodule Constable.AnnouncementController do
   end
 
   def new(conn, _params) do
-    render_form(conn, "new.html", %Announcement{})
+    changeset = Announcement.changeset(%Announcement{}, :create)
+    render_form(conn, "new.html", changeset)
   end
 
   def create(conn, %{"announcement" => announcement_params}) do
-    {interest_names, announcement_params} = extract_interest_names(announcement_params)
     announcement_params = announcement_params
       |> Map.put("user_id", conn.assigns.current_user.id)
 
-    case AnnouncementCreator.create(announcement_params, interest_names) do
+    case AnnouncementCreator.create(announcement_params, []) do
       {:ok, announcement} ->
         redirect(conn, to: announcement_path(conn, :show, announcement.id))
       {:error, changeset} ->
@@ -63,21 +63,20 @@ defmodule Constable.AnnouncementController do
 
   def edit(conn, %{"id" => id}) do
     announcement = Repo.get!(Announcement, id)
-    render_form(conn, "edit.html", announcement)
+    changeset = Announcement.changeset(announcement, :update)
+    render_form(conn, "edit.html", changeset)
   end
 
   def update(conn, %{"id" => id, "announcement" => announcement_params}) do
     current_user = conn.assigns.current_user
     announcement = Repo.get!(Announcement, id)
 
-    {interest_names, announcement_params} = extract_interest_names(announcement_params)
-
     if announcement.user_id == current_user.id do
-      case AnnouncementUpdater.update(announcement, announcement_params, interest_names) do
+      case AnnouncementUpdater.update(announcement, announcement_params, []) do
         {:ok, announcement} ->
           redirect(conn, to: announcement_path(conn, :show, announcement.id))
         {:error, changeset} ->
-          render_form(conn, "edit", announcement)
+          render_form(conn, "edit.html", changeset)
       end
     else
       conn
@@ -86,8 +85,7 @@ defmodule Constable.AnnouncementController do
     end
   end
 
-  defp render_form(conn, action, announcement) do
-    changeset = Announcement.changeset(announcement, :create)
+  defp render_form(conn, action, changeset) do
     interests = Repo.all(Interest)
     users = Repo.all(User)
 
