@@ -10,6 +10,10 @@
         <%= time_ago_in_words @comment.inserted_at %>
       </a>
     </time>
+
+    <%= link to: announcement_comment_path(@conn, :edit, @announcement, @comment), data: [role: "edit-comment"] do %>
+      <%= gettext "(Edit)" %>
+    <% end %>
   </div>
 
   <div class="comment-body">

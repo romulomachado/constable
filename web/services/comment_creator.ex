@@ -62,6 +62,6 @@ defmodule Constable.Services.CommentCreator do
   end
 
   defp render_comment_html(comment) do
-    Phoenix.View.render_to_string(Constable.AnnouncementView, "_comment.html", comment: comment)
+    Phoenix.View.render_to_string(Constable.CommentView, "show.html", comment: comment)
   end
 end
