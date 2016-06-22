@@ -18,7 +18,8 @@ config :constable, Constable.Endpoint,
 config :constable, Constable.Repo,
   adapter: Ecto.Adapters.Postgres,
   database: "constable_api_development",
-  hostname: "localhost"
+  hostname: System.get_env("PGHOST"),
+  port: System.get_env("PGPORT")
 
 config :constable, Constable.Mailer,
   adapter: Bamboo.LocalAdapter
