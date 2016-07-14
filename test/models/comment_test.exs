@@ -13,7 +13,7 @@ defmodule Constable.CommentTest do
   end
 
   defp create_announcement_last_discussed(time_ago) do
-    insert(:announcement, last_discussed_at: Ecto.DateTime.cast!(time_ago))
+    insert(:announcement, last_discussed_at: time_ago)
   end
 
   defp insert_comment_on_announcement(announcement, last_discussed_at) do
