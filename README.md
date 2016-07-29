@@ -5,6 +5,8 @@
 Constable is a Phoenix app for posting announcements and having discussions.
 To learn more about Phoenix, check out [Programming Phoenix](https://pragprog.com/book/phoenix/programming-phoenix)
 
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/thoughtbot/constable/tree/tw-document-deployment-to-heroku)
+
 ## Starting the Console
 
 Use `bin/console` to start the console. Use `bin/console staging|production` to
