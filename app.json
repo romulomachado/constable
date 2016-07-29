@@ -1,8 +1,8 @@
 {
   "name": "constable",
-  "description": "Constable Heroku review app config",
+  "description": "Constable Heroku app config",
   "scripts": {
-    "postdeploy": "mix ecto.migrate && mix run priv/repo/seeds.exs"
+    "postdeploy": "mix ecto.migrate"
   },
   "env": {
     "ADMIN_EMAILS": {
@@ -17,11 +17,7 @@
     "CLIENT_SECRET": {
       "required": true
     },
-    "HEROKU_APP_NAME": {
-      "required": true
-    },
     "HONEYBADGER_API_KEY": {
-      "required": true
     },
     "HONEYBADGER_ENV": "review",
     "INBOUND_EMAIL_DOMAIN": {
@@ -30,9 +26,7 @@
     "MANDRILL_KEY": {
       "required": true
     },
-    "MIX_ENV": {
-      "required": true
-    },
+    "MIX_ENV": "prod",
     "OAUTH_REDIRECT_OVERRIDE": "https://constable-oauth-redirector.herokuapp.com/auth",
     "OUTBOUND_EMAIL_DOMAIN": {
       "required": true
@@ -46,9 +40,7 @@
     "SLACK_WEBHOOK_URL": {
       "required": true
     },
-    "URL_PORT": {
-      "required": true
-    }
+    "URL_PORT": 443
   },
   "formation": {
     "web": {
