@@ -8,9 +8,6 @@
     "ADMIN_EMAILS": {
       "required": true
     },
-    "BUILDPACK_URL": {
-      "required": true
-    },
     "CLIENT_ID": {
       "required": true
     },
@@ -40,7 +37,7 @@
     "SLACK_WEBHOOK_URL": {
       "required": true
     },
-    "URL_PORT": 443
+    "URL_PORT": "443"
   },
   "formation": {
     "web": {
