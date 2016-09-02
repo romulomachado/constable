@@ -1,5 +1,7 @@
 # Constable
 
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
 **Constable is part of the [thoughtbot Elixir family][elixir-phoenix] of projects.**
 
 Constable is a Phoenix app for posting announcements and having discussions.
